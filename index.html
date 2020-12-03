@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Animated round pop up menu circle</title>
+  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/sweetalert2'></script>
+  <script src="./script.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+    integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.5.0/print.js"
+    integrity="sha512-j4gEMMRxGKV6WrHIPj0NmIVBRS0UTYU8tiV/q5X1Hd5iFngs1grFuu15np/tFP70tynShfcBoPHb0wR8Ag8S1Q=="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="menu">
+      <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+      <label class="menu-open-button" for="menu-open">
+        <span class="lines line-1"></span>
+        <span class="lines line-2"></span>
+        <span class="lines line-3"></span>
+      </label>
+      <a href="#" class="menu-item item-1" data-toggle="modal" data-target="#myModal">
+        <i class="fa fa-wallet"></i>
+      </a>
+      <a href="#" class="menu-item item-2" data-toggle="modal" data-target="#myModal2">
+        <i class="fa fa-balance-scale"></i>
+      </a>
+      <a href="#" class="menu-item item-3" data-toggle="modal" data-target="#myModal3">
+        <i class="fa fa-piggy-bank"></i>
+      </a>
+      <a href="#" class="menu-item item-4" data-toggle="modal" data-target="#myModal4">
+        <i class="fa fa-landmark"></i>
+      </a>
+      <a href="#" class="menu-item item-5" data-toggle="modal" data-target="#myModal5">
+        <i class="fa fa-star"></i>
+      </a>
+      <a href="#" class="menu-item item-6" data-toggle="modal" data-target="#myModal6">
+        <i class="fa fa-air-freshener"></i>
+      </a>
+    </nav>
+
+    <!-- modal items -->
+    <!--* Modal1 Done!-->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">2. Tính toán sản phẩm bán ra</h4>
+          </div>
+          <div class="modal-body">
+            <form id="handleProductForm1">
+              <div class="form-group">
+                <label for="formGroupExampleInput">Tên sản phẩm</label>
+                <input type="text" class="form-control" id="valueProductForm1" placeholder="Nhập Tên Sản phẩm ...">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2" text-left>Tổng sản phẩm</label>
+                <input type="number" class="form-control" id="valueProductForm2" placeholder="Nhập Tổng sản phẩm ...">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2" text-left>Sản phẩm tồn kho</label>
+                <input type="number" class="form-control" id="valueProductForm3"
+                  placeholder="Nhập sản phẩm tồn kho ...">
+              </div>
+              <img src="https://i.pinimg.com/originals/b7/e3/ca/b7e3ca50f1e31f8e6939f10d04e5c191.gif" id="imgGif1"
+                class="centerImg" alt="">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal" id="btnclicked"
+              onclick="handleClose1()">Thoát</button>
+            <button type="button" class="btn btn-danger" onclick="handleClose1()">Làm mới</button>
+            <button type="button" class="btn btn-success" onclick="handleModule1()">Gửi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--* Modal2 Done!-->
+    <div id="myModal2" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">1.Số tiền phải trả khi mua hàng giảm giá </h4>
+          </div>
+          <div class="modal-body">
+            <form id="handleProductForm2">
+              <div class="form-group">
+                <label for="formGroupExampleInput">Tên sản phẩm</label>
+                <input type="text" class="form-control" id="valuePercentForm1" placeholder="Nhập Tên sản phẩm...">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2" text-left>Giá tiền</label>
+                <input type="number" class="form-control" id="valuePercentForm2" placeholder="Nhập Giá tiền...">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Giảm giá: <span id="valueDiscount"
+                    class="text-danger"></span></label>
+                <input type="range" min="0" max="100" value="0" class="form-control-range" id="valueRange">
+              </div>
+              <img
+                src="https://camo.voz.tech/ecfa9e770c4c224e1e66385f3d4073fe3e67705f/68747470733a2f2f692e696d6775722e636f6d2f7a6f613239374b2e676966/"
+                id="imgGif2" class="centerImg" alt="">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal" onclick="handleClose2()">Thoát</button>
+            <button type="button" class="btn btn-danger" onclick="handleClose2()">Làm mới</button>
+            <button type="button" class="btn btn-success" onclick="handleModule2()">Gửi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--* Modal3 Done! -->
+    <div id="myModal3" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">4.Tính lãi suất tiền gửi ngân hàng</h4>
+          </div>
+          <div class="modal-body">
+            <form id="handleProductForm3">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Họ Và Tên</label>
+                    <input type="text" class="form-control text-right" id="valueSavingBankForm1"
+                      placeholder="Nhập Họ Và Tên...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Số tiền gửi</label>
+                    <input type="number" class="form-control text-right" id="valueSavingBankForm2"
+                      placeholder="Nhập Số tiền gửi...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Lãi Suất</label>
+                    <input type="number" class="form-control text-right" min="1" max="12" id="valueSavingBankForm3"
+                      placeholder="Nhập Lãi Suất...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Kỳ Hạn</label>
+                    <input type="number" class="form-control text-right" min="1" max="60" id="valueSavingBankForm4"
+                      placeholder="Nhập Kỳ Hạn...">
+                  </div>
+                </div>
+
+                <div class="col-sm-10 col-sm-offset-1">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Lãi Suất Tạm Tính</label>
+                    <div class="input-group">
+                      <span class="input-group-addon">Hàng Tháng</span>
+                      <input type="text" readonly class="form-control text-right" id="valueSavingBankForm5" value="0" />
+                      <span class="input-group-addon">Lãi suất <span class="valueInterest">0</span> tháng</span>
+                      <input type="text" readonly class="form-control text-right" id="valueSavingBankForm6" value="0" />
+                    </div>
+                  </div>
+                </div>
+                <img src="https://i.pinimg.com/originals/fd/e1/7d/fde17da262ff00f1b2c03efc8110a67c.gif" id="imgGif3"
+                  class="centerImg" alt="">
+              </div>
+            </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal" onclick="handleClose3()">Thoát</button>
+              <button type="button" class="btn btn-danger" onclick="handleClose3()">Làm mới</button>
+              <button type="button" class="btn btn-success" onclick="handleModule3()">Gửi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--* Modal4  Done-->
+    <div id="myModal4" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">5.tính toán lãi suất vay ngân hàng</h4>
+          </div>
+          <div class="modal-body">
+            <form id="handleProductForm4">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Họ Và Tên</label>
+                    <input type="text" class="form-control text-right" id="valueLoanBankForm1"
+                      placeholder="Nhập Họ Và Tên...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Số tiền muốn vay</label>
+                    <input type="number" class="form-control text-right" id="valueLoanBankForm2"
+                      placeholder="Nhập Số tiền muốn vay...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Lãi suất cho vay</label>
+                    <input type="number" class="form-control text-right" min="1" max="12" id="valueLoanBankForm3"
+                      placeholder="Nhập Lãi suất cho vay...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Thời hạn vay</label>
+                    <input type="number" class="form-control text-right" min="1" max="60" id="valueLoanBankForm4"
+                      placeholder="Nhập Thời hạn vay...">
+                  </div>
+                </div>
+                <div class="col-sm-10 col-sm-offset-1">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Lãi Suất Tạm Tính</label>
+                    <div class="input-group">
+                      <span class="input-group-addon">Hàng Tháng</span>
+                      <input type="text" readonly class="form-control text-right" id="valueLoanBankForm6" value="0" />
+                      <span class="input-group-addon">Tổng Tiền gốc & Tiền lãi của <span class="valueInterest">0</span>
+                        tháng</span>
+                      <input type="text" readonly class="form-control text-right" id="valueLoanBankForm7" value="0" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <img src="https://i.pinimg.com/originals/3a/ac/e7/3aace7272ecb66908d5ee88bc9638d27.gif" id="imgGif4"
+                class="centerImg" alt="">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal" onclick="handleClose4()">Thoát</button>
+            <button type="button" class="btn btn-danger" onclick="handleClose4()">Làm mới</button>
+            <button type="button" class="btn btn-success" onclick="handleModule4()">Gửi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TODOs:Pause Modal5 & ModalTab Building
+    <div id="myModal5" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">6. Chương trình tính điểm và xếp loại học sinh</h4>
+          </div>
+          <div class="modal-body">
+            <form id="handleProductForm5">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput" class="text-primary">Tên Lớp Học</label>
+                    <input type="text" class="form-control" id="valueStudenForm1" placeholder="Nhập Tên Lớp Học...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput" class="text-primary">Tên Người Phụ Trách</label>
+                    <input type="text" class="form-control" id="valueStudenForm2"
+                      placeholder="Nhập Tên Người Phụ Trách...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput" class="text-primary">Số lượng môn học</label>
+                    <input type="number" class="form-control" min="1" max="15" id="valueStudenForm3"
+                      placeholder="Nhập số lượng môn...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput" class="text-primary">Số lượng học sinh</label>
+                    <input type="number" class="form-control" min="1" max="50" id="valueStudenForm4"
+                      placeholder="Nhập số lượng học sinh...">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" style="float: left;" id="myModalTabValue" data-toggle="modal"
+              data-target="#myModalTab" ><i class="fas fa-sticky-note"></i> Đánh giá & Xếp hạng học sinh</button>
+            <button type="button" class="btn btn-info" data-dismiss="modal" onclick="handleClose5()">Thoát</button>
+            <button type="button" class="btn btn-danger" onclick="handleClose5()">Làm mới</button>
+            <button type="button" class="btn btn-success" onclick="handleModule5()">Gửi</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- TODOs:Pause Modal5 tab Building
+    <div class="modal fade" id="myModalTab" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Đánh giá & Lịch sử</h4>
+          </div>
+          <div class="modal-body">
+            <div role="tabpanel">
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#uploadTab" aria-controls="uploadTab" role="tab"
+                    data-toggle="tab">Đánh giá</a>
+
+                </li>
+                <li role="presentation"><a href="#browseTab" aria-controls="browseTab" role="tab"
+                    data-toggle="tab">Browse</a>
+
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="uploadTab">Đánh giá học sinh</div>
+                <div role="tabpanel" class="tab-pane" id="browseTab">Xếp loại</div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
+            <button type="button" class="btn btn-primary save">Lưu dưới dạng PDF</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!--? Modal6(+7) Building -->
+    <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Chương trình quản lý lớp và quản lý học sinh</h4>
+          </div>
+          <div class="modal-body">
+            <div role="tabpanel">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#uploadTab" aria-controls="uploadTab" role="tab"
+                    data-toggle="tab" id="checkTab1">Danh sách lớp học</a>
+                </li>
+                <li role="presentation"><a href="#browseTab" aria-controls="browseTab" role="tab" data-toggle="tab"
+                    id="checkTab2">Danh
+                    Sách học sinh</a>
+                </li>
+              </ul>
+              <!--! Tab panes -->
+              <div class="tab-content">
+                <!--! Tab one building -->
+                <div role="tabpanel" class="tab-pane active" id="uploadTab">
+                  <form id="handleFormClassStudent1">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Người Phụ Trách</label>
+                          <input type="text" class="form-control" id="valueClassStudentForm1"
+                            placeholder="Nhập Người Phụ Trách...">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Tên Lớp</label>
+                          <input type="text" class="form-control" id="valueClassStudentForm2"
+                            placeholder="Nhập Tên Lớp...">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Số Lượng Học Sinh</label>
+                          <input type="text" class="form-control" id="valueClassStudentForm3"
+                            placeholder="Nhập Số Lượng Học Sinh...">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Khóa Lớp</label>
+                          <input type="text" class="form-control" id="valueClassStudentForm4"
+                            placeholder="Nhập Khóa Lớp...">
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!--! Tab two -->
+                <div role="tabpanel" class="tab-pane" id="browseTab">
+                  <form id="handleFormClassStudent2">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Tên Học Sinh</label>
+                          <input type="text" class="form-control" id="valueClassStudentForm5"
+                            placeholder="Nhập Tên Học Sinh...">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Số Điện Thoại</label>
+                          <input type="text" class="form-control" id="valueClassStudentForm6"
+                            placeholder="Nhập Số Điện Thoại...">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Địa Chỉ</label>
+                          <input type="text" class="form-control" id="valueClassStudentForm7"
+                            placeholder="Nhập Địa Chỉ...">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Chọn Lớp Học</label>
+                          <select class="form-control" id="valueClassStudentForm8" placeholder="Nhập Số Điện Thoại...">
+                            <option value="" selected disabled>Chọn một lớp</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" style="float: left;" data-toggle="modal"
+              data-target="#myModal7">Danh sách lớp & học
+              sinh</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+            <button type="button" class="btn btn-primary save" id="idModule6" onclick="handleModule6()">Lưu thay
+              đổi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Danh Sách</h4>
+          </div>
+          <div class="modal-body">
+            <div role="tabpanel">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#uploadTab2" aria-controls="uploadTab" role="tab"
+                    data-toggle="tab" id="checkTab3">1c</a>
+                </li>
+                <li role="presentation"><a href="#browseTab2" aria-controls="browseTab" role="tab" data-toggle="tab"
+                    id="checkTab4">2</a>
+                </li>
+              </ul>
+              <!--! Tab panes -->
+              <div class="tab-content">
+                <!--! Tab one building -->
+                <div role="tabpanel" class="tab-pane active" id="uploadTab2">
+                  <!--? DataTable1 -->
+                  <table class="table table-bordered" id="dataTable1" border="1">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Tên Lớp</th>
+                        <th>Người phụ trách</th>
+                        <th>Số lượng học sinh</th>
+                        <th>Khóa Lớp</th>
+                      </tr>
+                    </thead>
+                    <tbody id="fillDataTable1">
+                      <!--? Fill Data -->
+                        
+                    </tbody>
+                  </table>
+                </div>
+                <!--! Tab two -->
+                <div role="tabpanel" class="tab-pane" id="browseTab2">
+                  <!--? DataTable2 -->
+                  <table class="table" id="dataTable2">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Họ và Tên</th>
+                        <th>Lớp Học</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa Chỉ</th>
+                      </tr>
+                    </thead>
+                    <tbody id="fillDataTable2">
+                     
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+                  <button type="button" class="btn btn-primary save" id="printPDF"
+                    onclick="printJS('dataTable1', 'html')">In PDF</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+    <script src="./moduleScript1.js"></script>
+    <script src="./moduleScript2.js"></script>
+    <script src="./moduleScript3.js"></script>
+    <script src="./moduleScript4.js"></script>
+    <script src="./moduleScript6.js"></script>
+
+</body>
+
+</html>

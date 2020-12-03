@@ -7,7 +7,7 @@ function handleModule4() {
     let value2 = document.getElementById('valueLoanBankForm2').value;
     let value3 = document.getElementById('valueLoanBankForm3').value;
     let value4 = document.getElementById('valueLoanBankForm4').value;
-    let value5 = document.getElementById('valueLoanBankForm5').value;
+    // let value5 = document.getElementById('valueLoanBankForm5').value;
     let valueInterest = document.getElementById("handleProductForm4");
     valueInterest.querySelector(".valueInterest").innerHTML = value4;
     let interestBankMonth = value2 * ((value3 / 100) / value4);
